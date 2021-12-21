@@ -17,6 +17,7 @@ import Show from "components/Appointment/Show";
 import Confirm from "components/Appointment/Confirm";
 import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
+import Form from "components/Appointment/Form";
 
 storiesOf("Button", module)
   .addParameters({
@@ -171,3 +172,12 @@ storiesOf("DayListItem", module) //Initiates Storybook and registers our DayList
             onClose={action("onClose")}
           />
         ))
+        .add("Edit", () => (
+          <Form
+            student="Enter Student Name"
+            interviewer={3}
+            interviewers={interviewers}
+            onSave={action("onSave")}
+            onCancel={action("onCancel")}
+          />
+          ))
