@@ -12,10 +12,10 @@ export default function Form(props) {
     setInterviewer(null);
   };
 
-  const cancel = (student, interviewer) => {
+  const cancel = () => {
     reset()
-    return props.onCancel(student, interviewer)
-  }
+    return props.onCancel()
+  };
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -28,7 +28,7 @@ export default function Form(props) {
             value={student}
             onChange={(event) => setStudent(event.target.value)}
             placeholder="Enter Student Name"
-            /*
+            /* Need to check the cancel functionality later
               This must be a controlled component
               your code goes here
             */
@@ -42,7 +42,7 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button onClick={() => cancel(student, interviewer)} danger>Cancel</Button>
+          <Button onClick={() => cancel()} danger>Cancel</Button> 
           <Button onClick={() => props.onSave(student, interviewer)} confirm>Save</Button>
         </section>
       </section>
