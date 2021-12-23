@@ -21,8 +21,8 @@ export default function Appointment(props) {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CREATE && <Form 
             student="Enter Student Name"
-            interviewer={3}
-            interviewers={[]}
+            interviewer={props.interviewer}
+            interviewers={props.interviewers}
             onCancel={() => back()}
             />}
       {mode === SHOW && (<Show student={props.interview.student} interviewer={props.interview.interviewer}/>)}  
