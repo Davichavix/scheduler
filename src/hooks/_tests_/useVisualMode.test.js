@@ -8,5 +8,6 @@ const SECOND = "SECOND";
 test("useVisualMode should initialize with default value", () => {
   const { result } = renderHook(() => useVisualMode(FIRST));
 
+  act(() => result.current.transition(SECOND));
   expect(result.current.mode).toBe(FIRST);
 });
