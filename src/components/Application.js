@@ -48,8 +48,6 @@ export default function Application(props) {
     })
   }, [])
 
-    console.log(state)
-
     const dailyAppointments = getAppointmentsForDay(state, state.day);
     const dailyInterviewers = getInterviewersForDay(state, state.day);
 
@@ -58,10 +56,12 @@ export default function Application(props) {
 
       return (
       <Appointment
-      key={appointment.id} 
-      {...appointment}
-      interview={interview}
-      interviewers={dailyInterviewers}
+        key={appointment.id} 
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
       />
     )
   })
