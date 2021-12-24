@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import "components/Appointment/styles.scss"
 import Header from "./Header";
 import Show from "./Show";
@@ -40,14 +40,6 @@ export default function Appointment(props) {
 function deleteInterviewConfirm() {
   transition(CONFIRM)
 }
-
-// function deleteInterview() {
-//   transition(DELETE)
-//   props
-//     .cancelInterview(props.id)
-//     .then(() => transition(EMPTY))
-//     .catch((error => transition(ERROR_DELETE, true)))
-// }
 
 function destroy(event) {
   transition(DELETE, true);
