@@ -57,3 +57,25 @@ export function getInterview(state, interview) {
   }
   return interview;
 }
+
+export function getSpotsForDay(state, day, add) {
+
+  const dayObj = {
+    "Monday": 0,
+    "Tuesday": 1,
+    "Wednesday": 2,
+    "Thursday": 3,
+    "Friday": 4
+  };
+
+  let stateSpots = state["days"][dayObj[day]]["spots"]
+  let res = {};
+  if (add) {
+    stateSpots = stateSpots - 1;
+  } else {
+    stateSpots = stateSpots + 1;
+  }
+  res["spots"] = stateSpots;
+  res["index"] = dayObj[day];
+  return res;
+}
