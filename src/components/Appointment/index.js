@@ -6,7 +6,8 @@ import Empty from "./Empty";
 import useVisualMode from 'hooks/useVisualMode';
 import Form from './Form';
 import Status from './Status';
-import Confirm from './Confirm'
+import Confirm from './Confirm';
+import Error from './Error';
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
@@ -16,6 +17,8 @@ export default function Appointment(props) {
   const DELETE = "DELETE";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
  const { mode, transition, back } = useVisualMode(
    props.interview ? SHOW: EMPTY
@@ -30,6 +33,7 @@ export default function Appointment(props) {
     transition(SAVING)
     props.bookInterview(props.id, interview)
     .then(() => transition(SHOW))
+    .catch(error => transition(ERROR_SAVE, true))
   }
 }
 
@@ -37,11 +41,21 @@ function deleteInterviewConfirm() {
   transition(CONFIRM)
 }
 
-function deleteInterview() {
-  transition(DELETE)
-  props.cancelInterview(props.id)
-  .then(() => transition(EMPTY))
-}
+// function deleteInterview() {
+//   transition(DELETE)
+//   props
+//     .cancelInterview(props.id)
+//     .then(() => transition(EMPTY))
+//     .catch((error => transition(ERROR_DELETE, true)))
+// }
+
+function destroy(event) {
+  transition(DELETE, true);
+  props
+   .cancelInterview(props.id)
+   .then(() => transition(EMPTY))
+   .catch(error => transition(ERROR_DELETE, true));
+ }
 
 function editInterview() {
   transition(EDIT)
@@ -53,10 +67,18 @@ function editInterview() {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SAVING && <Status message={'Saving'}/>}
       {mode === DELETE && <Status message={'Deleting'}/>}
+      {mode === ERROR_SAVE && <Error
+        message={'Could not save appointment'}
+        onClose={back}
+      />}
+      {mode === ERROR_DELETE && <Error
+        message={'Could not delete appointment'}
+        onClose={back}
+      />}
       {mode === CONFIRM && <Confirm
         message='Delete the appointment?'
         onCancel={back}
-        onConfirm={deleteInterview}
+        onConfirm={destroy}
       />}
       {mode === CREATE && <Form 
         interviewer={props.interviewer}
