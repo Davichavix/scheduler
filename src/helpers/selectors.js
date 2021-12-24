@@ -29,7 +29,7 @@ export function getInterviewersForDay(state, day) {
   const getInterviewersIdForDay = function(stateDays, day) {
     for (const days of stateDays) {
         if (days["name"] === day) {
-          return days["appointments"];
+          return days["interviewers"];
         }
       }
       return [];
