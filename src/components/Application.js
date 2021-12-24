@@ -11,6 +11,13 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 
 export default function Application(props) {
 
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {},
+    interviewers: {}
+  });
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -22,16 +29,24 @@ export default function Application(props) {
     };
    console.log(id, interview);
     return axios.put(`/api/appointments/${id}`, appointment)
-    .then(() => setState({...state, appointments}))
+      .then(() => setState({...state, appointments}))
 
   }
+
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => setState({...state, appointments}))
+  }
   
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {}
-  });
 
   const setDay = day => setState({...state, day});
 
@@ -64,6 +79,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     )
   })
