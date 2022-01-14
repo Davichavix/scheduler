@@ -14,13 +14,13 @@ A link to the scheduler API is here - Both Scheduler and Scheduler-api are requr
 
 ## Project
 
-Interview Scheduler Main Page
+### Interview Scheduler Main Page
 !["screenshot of Scheduler front page Desktop"](https://github.com/Davichavix/scheduler/blob/main/docs/Scheduler_front_page.png?raw=true)
 
-Interview Create Appointment
+### Interview Create Appointment
 !["screenshot of Scheduler create appointment"](https://github.com/Davichavix/scheduler/blob/main/docs/Scheduler_Create_appointment.png?raw=true)
 
-Interview Delete Appointment
+### Interview Delete Appointment
 !["screenshot of Scheduler delete appointment"](https://github.com/Davichavix/scheduler/blob/main/docs/Scheduler_Delete_appointment.png?raw=true)
 
 ## Setup
