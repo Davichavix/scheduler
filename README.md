@@ -2,15 +2,14 @@
 
 Interview Scheduler is a single-page application (SPA) that allows users to book interviews between students and interviewer. The React front end makes requests to an API to fetch and store appointment data from a seperate database.
 
-A link to the scheduler API is here - Both Scheduler and Scheduler-api are requried to run simultaneously.
+A link to the scheduler API is here - Both Scheduler and Scheduler-api are requried to run simultaneously for full project functionality.
 [scheduler-api](https://github.com/Davichavix/scheduler-api)
 
-# Interview Scope
+# Interview Scopes
 - Appointments are between 12PM and 5PM, Monday to Friday
-- Each appointment is one student and on interviewer
-- Interviewer is chosen from predfined list
+- Each appointment is one student and one interviewer
+- Interviewer is chosen from predefined list
 - students can register a chosen name
-
 
 ## Project
 
