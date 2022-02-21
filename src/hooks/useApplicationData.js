@@ -62,6 +62,7 @@ const bookInterview = function(id, interview) {
     })
 }
 
+// deletes interview from database leaving empty slot
 const cancelInterview = function(id) {
   const appointment = {
     ...state.appointments[id],
