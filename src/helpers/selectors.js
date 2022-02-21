@@ -58,6 +58,7 @@ export function getInterview(state, interview) {
   return interview;
 }
 
+// helper function used to update spots remaining if new interview is added or existing interview cancelled
 export function getSpotsForDay(state, day, add) {
 
   const dayObj = {
@@ -78,4 +79,8 @@ export function getSpotsForDay(state, day, add) {
   res["spots"] = stateSpots;
   res["index"] = dayObj[day];
   return res;
+}
+
+export function getSpotForDay(state) {
+
 }

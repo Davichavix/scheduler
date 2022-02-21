@@ -28,25 +28,36 @@ export default function useApplicationData() {
 const setDay = day => setState({...state, day});
 
 const bookInterview = function(id, interview) {
-  const appointment = {
+
+  // Checks if interview is new or existing
+  // if exisitng set isInterviewNew to false;
+  let isInterviewNew = true;
+  state.appointments[id]['interview'] ? isInterviewNew = false : isInterviewNew = true;
+
+  const appointment = { 
     ...state.appointments[id],
     interview: { ...interview }
   };
+  
   const appointments = {
     ...state.appointments,
     [id]: appointment
   };
 
+  const days = [
+    ...state.days
+  ];
+
+  // if interview is new decrease spots remaining if exisitng leave spots the same
+  if (isInterviewNew) {
   let newSpots = getSpotsForDay(state, state.day, true)
   let updatedSpots = newSpots.spots;
   let dayIndex = newSpots.index;
-  const days = [
-    ...state.days
-  ]
   days[dayIndex]["spots"] = updatedSpots;
-
- return axios.put(`/api/appointments/${id}`, appointment)
- .then(() => {
+  }
+  // updates database with new appointment
+  return axios.put(`/api/appointments/${id}`, appointment)
+  .then(() => {
       setState({...state, appointments, days})
     })
 }
@@ -61,6 +72,7 @@ const cancelInterview = function(id) {
     [id]: appointment
   };
 
+  // if interview is cancelled increase spots remaining by 1
   let newSpots = getSpotsForDay(state, state.day, false)
   let updatedSpots = newSpots.spots;
   let dayIndex = newSpots.index;

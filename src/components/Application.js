@@ -25,7 +25,7 @@ const {
 
       return (
       <Appointment
-        key={appointment.id} 
+        key={appointment.id}
         id={appointment.id}
         time={appointment.time}
         interview={interview}
