@@ -80,7 +80,7 @@ function editInterview() {
       />}
       {mode === EDIT && <Form 
         student={props.interview.student}
-        interviewer={props.interviewer}
+        interviewer={props.interview.interviewer.id}
         interviewers={props.interviewers}
         onCancel={back}
         onSave={save}
