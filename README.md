@@ -5,7 +5,7 @@ Interview Scheduler is a single-page application (SPA) that allows users to book
 A link to the scheduler API is here - Both Scheduler and Scheduler-api are requried to run simultaneously for full project functionality.
 [scheduler-api](https://github.com/Davichavix/scheduler-api)
 
-# Interview Scopes
+# Interview Scope
 - Appointments are between 12PM and 5PM, Monday to Friday
 - Each appointment is one student and one interviewer
 - Interviewer is chosen from predefined list
