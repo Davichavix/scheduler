@@ -13,7 +13,7 @@ describe("Appointment", () => {
     // ...
   });
 
-  it("does something else it is supposed to do", () => {
+  test("does something else it is supposed to do", () => {
     // ...
   });
 });
